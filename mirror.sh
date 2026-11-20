@@ -6,7 +6,7 @@
 # Paths, best first: USB, same Wi-Fi (LAN), Tailscale (direct on the same Wi-Fi), WireGuard via the HK hub.
 # The WireGuard hop is thin (a few Mbit/s, ~150 ms, lossy from 5G), so it gets a smaller stream.
 USB=${MIRROR_USB:-3A110DLJG0019U}
-LAN=${MIRROR_LAN:-10.0.110.157:5555}
+LAN=${MIRROR_LAN:-10.247.126.208:5555:-10.0.110.157:5555}
 TS=${MIRROR_TS:-100.64.0.84:5555}
 WG=${MIRROR_WG:-10.100.100.19:5555}
 SERIAL_FILE="$(dirname "$0")/.mirror-serial"   # serve.py reads this to poll rotation on the same path

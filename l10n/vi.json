@@ -2,7 +2,7 @@
   "ui": {
     "title": "Sinh hoạt chuyên môn K65: IDE, LLM, Git + GitHub",
     "alt_ftu": "Trường Đại học Ngoại thương",
-    "alt_ftds": "Khoa Công nghệ và Khoa học dữ liệu (FTDS)"
+    "alt_ctas": "Trường Công nghệ và Khoa học Ứng dụng (CTAS)"
   },
   "sections": {
     "intro": "Mở đầu",
@@ -13,6 +13,7 @@
     "end": "Kết thúc"
   },
   "s01": {
+    "role0": "Giảng viên hướng dẫn",
     "h1": "Sinh hoạt chuyên môn K65",
     "p1": "<b>IDE</b>, lập trình cùng <b>LLM</b>, <b>Git + GitHub</b>",
     "role1": "Trình bày chính",

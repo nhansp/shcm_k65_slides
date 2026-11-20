@@ -334,11 +334,11 @@ svg.dia .ann { fill: var(--orange); font-size: 21px; font-family: var(--f-code);
 
 /* title slide */
 .cover .content { top: 150px; }
-.cover .logos { display: flex; align-items: center; gap: 22px; margin-bottom: 56px; }
-.cover .logos img.ftds { height: 54px; }
+.cover .logos { display: flex; align-items: center; gap: 22px; margin-bottom: 40px; }
+.cover .logos img.ctas { height: 64px; }
 .cover .logos img.ftu { height: 72px; }
 .cover h1 {
-    font-size: 132px;
+    font-size: 100px;
     font-weight: 720;
     font-variation-settings: "wdth" 72, "opsz" 144;
     letter-spacing: -0.035em;
@@ -346,7 +346,7 @@ svg.dia .ann { fill: var(--orange); font-size: 21px; font-family: var(--f-code);
     max-width: 10ch;
 }
 .cover .sub {
-    margin-top: 34px;
+    margin-top: 26px;
     font-family: var(--f-code);
     font-size: 30px;
     color: var(--graphite);
@@ -354,14 +354,23 @@ svg.dia .ann { fill: var(--orange); font-size: 21px; font-family: var(--f-code);
 .cover .sub b { color: var(--ink); font-weight: 500; }
 .people {
     margin-top: auto;
+    padding-top: 28px;
     display: grid;
-    grid-template-columns: max-content max-content max-content;
-    gap: 8px 24px;
-    align-items: baseline;
-    font-size: 26px;
+    grid-template-columns: repeat(4, 214px);
+    gap: 18px;
 }
-.people code { color: var(--green); font-size: 21px; }
-.people small { font-size: 19px; color: var(--gray); }
+.person { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.person .p-name { font-size: 20px; white-space: nowrap; line-height: 1.25; margin-top: 10px; }
+.people code { color: var(--green); font-size: 17px; }
+.people small { font-size: 16px; color: var(--gray); line-height: 1.3; }
+/* avatar: initials until res/people/<id>.jpg exists */
+.avatar {
+    position: relative; width: 112px; height: 112px; border-radius: 50%;
+    display: grid; place-items: center; overflow: hidden;
+    background: var(--faint); border: 1.5px solid var(--rule);
+}
+.avatar b { font: 600 30px var(--f-code); color: var(--graphite); }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* ring dividers: start colored, then rings outside the section fade to gray */
 @media (prefers-reduced-motion: no-preference) {
@@ -782,14 +791,27 @@ ul.plain.tight code { font-size: 22px; }
     <div class="content">
         <div class="logos">
             <img class="ftu" src="assets/ftu.png" alt="Trường Đại học Ngoại thương" data-i18n-alt="ui.alt_ftu">
-            <img class="ftds" src="assets/ftds.png" alt="Khoa Khoa học dữ liệu (FTDS)" data-i18n-alt="ui.alt_ftds">
+            <img class="ctas" src="assets/ctas.png" alt="Trường Công nghệ và Khoa học Ứng dụng (CTAS)" data-i18n-alt="ui.alt_ctas">
         </div>
         <h1 data-i18n="s01.h1">Sinh hoạt chuyên môn K65</h1>
         <p class="sub" data-i18n="s01.p1"><b>IDE</b>, lập trình cùng <b>LLM</b>, <b>Git + GitHub</b></p>
         <div class="people">
-            <span>Trần Trung Nhân</span><code>@nhansp</code><small data-i18n="s01.role1">Trình bày chính</small>
-            <span>Nguyễn Anh Dũng</span><code>@Lan-0924</code><small data-i18n="s01.role2">Hỗ trợ</small>
-            <span>Vũ Đức Huy</span><code>@vdhwy</code><small data-i18n="s01.role3">Hỗ trợ</small>
+            <div class="person">
+                <span class="avatar"><b>PQ</b><img src="res/people/quang.jpg" alt="" onerror="this.remove()"></span>
+                <span class="p-name">TS Phùng Duy Quang</span><small data-i18n="s01.role0">Giảng viên hướng dẫn</small>
+            </div>
+            <div class="person">
+                <span class="avatar"><b>TN</b><img src="res/people/nhansp.jpg" alt="" onerror="this.remove()"></span>
+                <span class="p-name">Trần Trung Nhân</span><code>@nhansp</code><small data-i18n="s01.role1">Trình bày chính</small>
+            </div>
+            <div class="person">
+                <span class="avatar"><b>ND</b><img src="res/people/Lan-0924.jpg" alt="" onerror="this.remove()"></span>
+                <span class="p-name">Nguyễn Anh Dũng</span><code>@Lan-0924</code><small data-i18n="s01.role2">Hỗ trợ</small>
+            </div>
+            <div class="person">
+                <span class="avatar"><b>VH</b><img src="res/people/vdhwy.jpg" alt="" onerror="this.remove()"></span>
+                <span class="p-name">Vũ Đức Huy</span><code>@vdhwy</code><small data-i18n="s01.role3">Hỗ trợ</small>
+            </div>
         </div>
     </div>
 </section>
@@ -797,7 +819,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 2. AGENDA ===================== -->
 <section class="slide" data-sec="intro" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~</span>$ cat lo-trinh.txt</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~</span>$ cat lo-trinh.txt</div>
         <h2 data-i18n="s02.h2">50 phút, hai phần</h2>
         <svg class="dia" viewBox="0 0 1620 470" width="1620" height="470" aria-label="Lộ trình buổi học">
             <!-- dimension lines -->
@@ -902,7 +924,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 4. IDE LÀ GÌ ===================== -->
 <section class="slide" data-sec="ide" data-quiet data-glyphs="echo c &gt; /proc/sysrq-trigger">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/ide</span>$ cat la-gi.md</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/ide</span>$ cat la-gi.md</div>
         <div class="cols" style="grid-template-columns: 540px 1fr; gap: 56px;">
             <div>
                 <h2 style="font-size:66px" data-i18n="s04.h2">IDE là gì?</h2>
@@ -917,7 +939,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 5. IDE: GUI ===================== -->
 <section class="slide paged" data-sec="ide">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/ide</span>$ ls /usr/share/applications</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/ide</span>$ ls /usr/share/applications</div>
         <div class="cols" style="grid-template-columns: 440px 1fr; gap: 64px;">
             <div>
                 <h2 data-i18n="s05.h2">GUI-based</h2>
@@ -986,7 +1008,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 5b. IDE: TUI ===================== -->
 <section class="slide paged" data-sec="ide">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/ide</span>$ ssh server -t vim</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/ide</span>$ ssh server -t vim</div>
         <div class="cols" style="grid-template-columns: 440px 1fr; gap: 64px;">
             <div>
                 <h2 data-i18n="s06tui.h2">TUI-based</h2>
@@ -1044,7 +1066,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 6. CÁCH SỬ DỤNG ===================== -->
 <section class="slide" data-sec="ide">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/ide</span>$ cat cach-dung.md <span class="c">--vscode</span></div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/ide</span>$ cat cach-dung.md <span class="c">--vscode</span></div>
         <h2 data-i18n="s06.h2">Dùng IDE: 7 shortcut đáng nhớ</h2>
         <table class="spec" style="max-width:1320px">
             <thead><tr><th data-i18n="s06.th1">Việc cần làm</th><th>Windows, Linux</th><th>macOS</th></tr></thead>
@@ -1073,7 +1095,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 8. HIỂU BẢN CHẤT ===================== -->
 <section class="slide" data-sec="llm">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/llm</span>$ git diff thoi-quen.md</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/llm</span>$ git diff thoi-quen.md</div>
         <h2 data-i18n="s08.h2">Hiểu bản chất, đừng vứt hết cho LLM</h2>
         <div class="cols c2-wide" style="grid-template-columns: 1fr 520px; gap: 70px;">
             <div class="term">
@@ -1092,7 +1114,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 8b. VÍ DỤ THẬT: BẮT LỖI MODEL ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/.claude/projects</span>$ grep -r "am i right" .</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/.claude/projects</span>$ grep -r "am i right" .</div>
         <h2 data-i18n="s08ex.h2">Ví dụ thật: hiểu thì mới bắt được lỗi</h2>
         <div class="cols c3 xcols">
             <div>
@@ -1126,7 +1148,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 9. CÂN BẰNG TÀI NGUYÊN ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/llm</span>$ cat tiet-kiem.md</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/llm</span>$ cat tiet-kiem.md</div>
         <h2 data-i18n="s09.h2">Cân bằng tài nguyên khi code</h2>
         <div class="cols c3 xcols">
             <div>
@@ -1180,7 +1202,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 9b. SỐ LIỆU THẬT ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~</span>$ python3 dem-token.py ~/.claude/projects</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~</span>$ python3 dem-token.py ~/.claude/projects</div>
         <h2 data-i18n="s09st.h2">Số liệu thật: 5 tháng dùng Claude Code</h2>
         <div class="st-wrap">
                 <h3 data-i18n="s09st.h3">Lượt gọi model, theo nơi chạy</h3>
@@ -1212,7 +1234,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 9c. BAO NHIÊU TIỀN ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~</span>$ claude --resume 98b007a8 | dem-tien</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~</span>$ claude --resume 98b007a8 | dem-tien</div>
         <h2 data-i18n="s09c.h2">Bộ slide này tốn bao nhiêu?</h2>
         <div class="cols" style="grid-template-columns: 1000px 1fr; gap: 64px;">
             <div>
@@ -1245,7 +1267,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 10. PROMPT VÍ DỤ ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/llm</span>$ diff prompt-1.txt prompt-2.txt</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/llm</span>$ diff prompt-1.txt prompt-2.txt</div>
         <h2 data-i18n="s10.h2">Prompt: đủ ngữ cảnh, rõ mục tiêu</h2>
         <div class="cols c2 xcols" style="gap:56px">
             <div>
@@ -1274,7 +1296,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 11. CODING AGENTS ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/llm</span>$ cat agents.md</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/llm</span>$ cat agents.md</div>
         <h2>Coding agents</h2>
         <div class="cols c2" style="grid-template-columns: 1fr 520px; gap: 60px; flex: none">
             <div>
@@ -1320,7 +1342,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 11a. ĐỪNG XẢ RÁC ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/llm</span>$ cat AGENTS.md</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/llm</span>$ cat AGENTS.md</div>
         <h2 data-i18n="s11c.h2">Đừng để hệ thống bị xả rác</h2>
         <div class="cols c2" style="gap:64px; flex:none">
             <div>
@@ -1353,7 +1375,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 11b. KẾT LLM ===================== -->
 <section class="slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~</span>$ claude "hi!"</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~</span>$ claude "hi!"</div>
         <div class="cols" style="grid-template-columns: 1fr 520px; gap: 64px; align-items: center;">
             <figure class="desk-shot">
                 <img src="res/hi.png" alt="Màn hình: Claude Code trong terminal chào “hi!” bên cạnh Chrome đang mở bộ slide này" data-i18n-alt="s11b.alt">
@@ -1370,7 +1392,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 11c. PIXEL TRỰC TIẾP ===================== -->
 <section class="slide mirror-slide" data-sec="llm" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~</span>$ scrcpy -s pixel --v4l2-sink=/dev/video10</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~</span>$ scrcpy -s pixel --v4l2-sink=/dev/video10</div>
         <h2 data-i18n="s11m.h2">Pixel của mình, ngay lúc này</h2>
         <p class="small muted mirror-note"><span class="live-dot"></span><span data-i18n="s11m.p1">Màn hình điện thoại đang điều khiển slide, truyền qua Wi-Fi và Tailscale.</span></p>
     </div>
@@ -1395,7 +1417,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 13. GIT LÀ GÌ ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git --help</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git --help</div>
         <h2 data-i18n="s13.h2">Git là gì?</h2>
         <div class="cols" style="grid-template-columns: 1fr 700px; gap: 64px">
             <div>
@@ -1433,7 +1455,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 14. TẠI SAO ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ ls ~/Documents/bao-cao/</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ ls ~/Documents/bao-cao/</div>
         <h2 data-i18n="s14.h2">Tại sao cần Git?</h2>
         <div class="cols" style="grid-template-columns: 1fr 1fr; gap: 72px">
             <div>
@@ -1506,7 +1528,7 @@ ul.plain.tight code { font-size: 22px; }
 <!-- ===================== 15. COMMIT + DIFF ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git show</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git show</div>
         <h2 data-i18n="s15.h2">commit và diff</h2>
         <div class="cols c2" style="grid-template-columns: 600px 1fr; gap: 64px">
             <div>
@@ -1527,7 +1549,7 @@ Date:   Thu Oct 30 14:05 2026
 <span class="c">+++ b/k65/members/nguyenvana.json</span>
 <span class="c">@@ -3,3 +3,3 @@</span>
    "github": "nguyenvana",
-<span class="del" data-i18n="s15.d1">-  "bio": "Mình thích code.",</span><span class="add" data-i18n="s15.a1">+  "bio": "Mình thích code và cầu lông.",</span>   "role": "K65, FTDS"</pre>
+<span class="del" data-i18n="s15.d1">-  "bio": "Mình thích code.",</span><span class="add" data-i18n="s15.a1">+  "bio": "Mình thích code và cầu lông.",</span>   "role": "K65, CTAS"</pre>
             </div>
         </div>
     </div>
@@ -1536,7 +1558,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 15b. COMMIT HOẠT ĐỘNG THẾ NÀO ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git add . &amp;&amp; git commit</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git add . &amp;&amp; git commit</div>
         <h2 data-i18n="s15b.h2">git commit làm gì?</h2>
         <svg class="dia sweep" viewBox="0 0 1620 610" width="1620" height="610" aria-label="Từ working directory qua staging area thành commit, rồi main dịch lên commit mới" data-i18n-alt="s15b.alt">
             <g class="mono sm" text-anchor="start">
@@ -1597,7 +1619,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 16. BRANCH + TAG ===================== -->
 <section class="slide" data-sec="git" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git log --graph --all</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git log --graph --all</div>
         <h2 data-i18n="s16.h2">branch và tag</h2>
         <svg class="dia sweep" viewBox="0 0 1620 400" width="1620" height="400" aria-label="Sơ đồ nhánh main, nhánh feature và tag v1.0">
             <g stroke-width="3" fill="none">
@@ -1643,7 +1665,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 17. REMOTE, PUSH, PULL ===================== -->
 <section class="slide" data-sec="git" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git remote -v</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git remote -v</div>
         <h2>remote, push, pull</h2>
         <svg class="dia sweep" viewBox="0 0 1620 460" width="1620" height="460" aria-label="Luồng dữ liệu từ thư mục làm việc tới GitHub">
             <g fill="#fff" stroke-width="2">
@@ -1693,7 +1715,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 18. MERGE VS REBASE ===================== -->
 <section class="slide" data-sec="git" data-quiet>
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git merge <span class="c">vs</span> git rebase</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git merge <span class="c">vs</span> git rebase</div>
         <h2>merge hay rebase?</h2>
         <div class="cols c2" style="gap:80px">
             <div>
@@ -1737,7 +1759,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 18b. MERGE CONFLICT ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git merge feature/bio</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git merge feature/bio</div>
         <h2 data-i18n="s18b.h2">Merge conflict</h2>
         <div class="cols c2" style="grid-template-columns: 1fr 840px; gap: 64px; flex:none">
             <div>
@@ -1766,7 +1788,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 19. NỀN TẢNG ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git remote add origin <span class="c">???</span></div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git remote add origin <span class="c">???</span></div>
         <h2 data-i18n="s19.h2">Git là công cụ, còn đây là nơi lưu repo</h2>
         <div class="platforms">
             <div class="pick"><img class="plat-logo" src="res/Octicons-mark-github.svg" alt=""><b class="g">GitHub</b><p data-i18n="s19.p1">Lớn nhất thế giới, trung tâm của mã nguồn mở. Thuộc Microsoft.</p></div>
@@ -1784,7 +1806,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 19b. TÍNH NĂNG GITHUB ===================== -->
 <section class="slide paged" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ gh browse</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ gh browse</div>
         <h2 data-i18n="s19b.h2">Bốn thứ cần biết trên GitHub</h2>
         <div class="pages gh-pages">
             <div class="page">
@@ -1815,7 +1837,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 20. TẠO TK GITHUB ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ open https://github.com/signup</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ open https://github.com/signup</div>
         <h2 data-i18n="s20.h2">Tạo tài khoản GitHub</h2>
         <div class="cols" style="grid-template-columns: 1fr 880px; gap: 56px">
             <ol class="steps">
@@ -1836,7 +1858,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 21. CÀI GIT + GH ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ which git gh</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ which git gh</div>
         <h2 data-i18n="s21.h2">Cài git và gh CLI</h2>
         <div class="cols c3" style="gap:40px">
             <div class="os-col">
@@ -1867,7 +1889,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 22. CẤU HÌNH ===================== -->
 <section class="slide" data-sec="git">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/git</span>$ git config --list</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/git</span>$ git config --list</div>
         <h2 data-i18n="s22.h2">Cấu hình một lần, dùng mãi</h2>
         <div class="cols c2" style="grid-template-columns: 1040px 1fr; gap: 56px">
             <div class="term" style="font-size:25px">
@@ -1902,7 +1924,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 24. ĐỀ BÀI ===================== -->
 <section class="slide" data-sec="lab">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ cat de-bai.md</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ cat de-bai.md</div>
         <h2 data-i18n="s24.h2">Gửi pull request đầu tiên</h2>
         <div class="cols" style="grid-template-columns: 1fr 760px; gap: 56px">
             <div>
@@ -1916,7 +1938,7 @@ Date:   Thu Oct 30 14:05 2026
             </div>
             <div class="term" style="font-size:23px">
                 <div class="t-head"><i></i><i></i><i></i><span>k65/members/nguyenvana.json</span></div>
-<pre><span class="add">+ {</span><span class="add" data-i18n="s24.j1">+   "name": "Nguyễn Văn A",</span><span class="add">+   "github": "nguyenvana",</span><span class="add">+   "role": "K65, FTDS",</span><span class="add" data-i18n="s24.j2">+   "bio": "Một hai câu về bạn.",</span><span class="add">+   "links": {</span><span class="add">+     "Website": "https://…"</span><span class="add">+   }</span><span class="add">+ }</span></pre>
+<pre><span class="add">+ {</span><span class="add" data-i18n="s24.j1">+   "name": "Nguyễn Văn A",</span><span class="add">+   "github": "nguyenvana",</span><span class="add">+   "role": "K65, CTAS",</span><span class="add" data-i18n="s24.j2">+   "bio": "Một hai câu về bạn.",</span><span class="add">+   "links": {</span><span class="add">+     "Website": "https://…"</span><span class="add">+   }</span><span class="add">+ }</span></pre>
             </div>
         </div>
     </div>
@@ -1925,7 +1947,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 25. CÁC BƯỚC ===================== -->
 <section class="slide" data-sec="lab">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ cat cac-buoc.sh</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ cat cac-buoc.sh</div>
         <h2 data-i18n="s25.h2">Từ fork tới pull request</h2>
         <div class="term" style="font-size:23px; max-width:1620px">
             <div class="t-head"><i></i><i></i><i></i><span>cac-buoc.sh</span></div>
@@ -1951,7 +1973,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 26. LỠ NHIỀU COMMIT ===================== -->
 <section class="slide" data-sec="lab">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ git log --oneline <span class="c">main..HEAD</span></div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ git log --oneline <span class="c">main..HEAD</span></div>
         <h2 data-i18n="s26.h2">Lỡ 3 commit? Gộp thành 1</h2>
         <div class="cols c2" style="grid-template-columns: 1000px 1fr; gap: 56px">
             <div class="term" style="font-size:25px">
@@ -1974,7 +1996,7 @@ Date:   Thu Oct 30 14:05 2026
 <!-- ===================== 27. CHECKLIST ===================== -->
 <section class="slide" data-sec="lab">
     <div class="content">
-        <div class="path"><span class="p-user">k65@ftds.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ gh pr checks</div>
+        <div class="path"><span class="p-user">k65@ctas.ftu</span>:<span class="p-dir">~/thuc-hanh</span>$ gh pr checks</div>
         <h2 data-i18n="s27.h2">Trước khi bấm “Create pull request”</h2>
         <div class="cols c2" style="gap:64px">
             <ul class="plain green">
